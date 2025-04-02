@@ -1,9 +1,9 @@
+import { envs } from "src/configuration";
 import { MercadoPagoConfig, Payment, Preference } from "mercadopago";
+import { CreatePaymentDto } from "src/payments/dto/create-payment.dto";
 import { PaymentGateway } from "../../interfaces/payment-gateway.interface";
 import { PaymentResponse } from "mercadopago/dist/clients/payment/commonTypes";
 import { PreferenceResponse } from "mercadopago/dist/clients/preference/commonTypes";
-import { envs } from "src/configuration";
-import { CreatePaymentDto } from "src/payments/dto/create-payment.dto";
 
 // Implementación para MercadoPago
 export class MercadoPagoImplement implements PaymentGateway {
@@ -36,14 +36,6 @@ export class MercadoPagoImplement implements PaymentGateway {
     const createPreference = await this.preference.create({
       body: {
         items: items,
-        payer: {
-          name: paymentDto.user.fullname,
-          email: paymentDto.user.email,
-          phone: {
-            area_code: "57",
-            number: paymentDto.user?.phone.split(" ").join("") || '',
-          },
-        },
         back_urls: {
           success: `${envs.app_url}/orden-de-compra/${
             paymentDto.subscription_id
@@ -59,7 +51,7 @@ export class MercadoPagoImplement implements PaymentGateway {
         payment_methods: {
           installments: 1,
         },
-        notification_url: envs.mercado_pago_webhook
+        notification_url: envs.m_pago_webhook
       },
     });
 

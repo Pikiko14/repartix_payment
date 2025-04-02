@@ -12,33 +12,29 @@ import {
 } from 'class-validator';
 import { Type } from 'class-transformer';
 import { PaymentMethods, StatusPayment } from '../entities/payment.entity';
-import { UserSubscriptionDto } from 'src/subscription/dto/user-subscription.dto';
 
 export class CreatePaymentDto {
   @IsNotEmpty()
   @IsMongoId()
   subscription_id: string;
 
+  @IsOptional()
   @IsEnum(StatusPayment)
   payment_status?: StatusPayment;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   external_id;
 
-  @IsOptional()
-  @IsDate()
+  @IsString()
   date_pay: string;
 
   @IsNumber()
+  @IsNotEmpty()
   @IsPositive()
   total: number;
 
   @IsNotEmpty()
-  @IsObject()
-  @Type(() => UserSubscriptionDto)
-  user: UserSubscriptionDto;
-
-  @IsEnum(PaymentMethods)
-  paymentMethods?: PaymentMethods;
+  @IsString()
+  paymentMethods?: string;
 }

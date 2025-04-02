@@ -11,7 +11,7 @@ export class PaymentsService {
     const paymentGateway = PaymentFactory.createPaymentGateway(createPaymentDto.paymentMethods);
     try {
       const paymentPreference = await paymentGateway.processPayment(createPaymentDto);
-      return paymentPreference;
+      return paymentPreference?.init_point || null;
     } catch (error) {
       throw new RpcException({
         message: error.message,
