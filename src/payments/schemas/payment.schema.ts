@@ -17,7 +17,7 @@ export class Payments {
   @Prop({ default: StatusPayment.pending })
   payment_status: StatusPayment;
 
-  @Prop({ index: true, required: true })
+  @Prop({ index: true, required: false })
   external_id: string;
 
   @Prop({ index: true, required: true })

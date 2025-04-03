@@ -4,6 +4,7 @@ export class PaymentEntity {
   external_id: string;
   date_pay?: Date;
   total: number;
+  _id?: string;
 }
 
 export enum StatusPayment {

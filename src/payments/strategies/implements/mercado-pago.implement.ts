@@ -31,7 +31,6 @@ export class MercadoPagoImplement implements PaymentGateway {
         unit_price: paymentDto.total,
       }
     ];
-    console.log(paymentDto);
 
     const createPreference = await this.preference.create({
       body: {

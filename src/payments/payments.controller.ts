@@ -11,4 +11,9 @@ export class PaymentsController {
   create(@Payload() createPaymentDto: CreatePaymentDto) {
     return this.paymentsService.create(createPaymentDto);
   }
+
+  @MessagePattern('validatePayment')
+  valdiatePayment(@Payload() id: string) {
+    return this.paymentsService.validatePayment(id);
+  }
 }
