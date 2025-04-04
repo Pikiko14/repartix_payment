@@ -36,15 +36,15 @@ export class MercadoPagoImplement implements PaymentGateway {
       body: {
         items: items,
         back_urls: {
-          success: `${envs.app_url}/orden-de-compra/${
+          success: `${envs.app_url}/dashboard/?subscription_id=${
             paymentDto.subscription_id
-          }/approved`,
-          pending: `${envs.app_url}/orden-de-compra/${
+          }&status=approved`,
+          pending: `${envs.app_url}/dashboard?subscription_id=${
             paymentDto.subscription_id
-          }/pending`,
-          failure: `${envs.app_url}/orden-de-compra/${
+          }&status=pending`,
+          failure: `${envs.app_url}/dashboard?subscription_id=${
             paymentDto.subscription_id
-          }/fail`,
+          }&status=fail`,
         },
         external_reference: paymentDto.subscription_id,
         payment_methods: {
