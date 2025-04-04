@@ -1,17 +1,13 @@
 import {
-  IsDate,
   IsEnum,
   IsMongoId,
   IsNotEmpty,
   IsNumber,
-  IsObject,
   IsOptional,
   IsPositive,
   IsString,
-  ValidateNested,
 } from 'class-validator';
-import { Type } from 'class-transformer';
-import { PaymentMethods, StatusPayment } from '../entities/payment.entity';
+import { StatusPayment } from '../entities/payment.entity';
 
 export class CreatePaymentDto {
   @IsNotEmpty()
