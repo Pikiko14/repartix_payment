@@ -8,6 +8,7 @@ interface EnvVars {
   APP_ENV: string;
   NATS_URL: string;
   ATLAS_URL: string;
+  NATH_SERVICE: string;
   MERCADO_PAGO_URL: string;
   MERCADO_PAGO_PUBLIC_KEY: string;
   MERCADO_PAGO_PRIVATE_KEY: string;
@@ -20,6 +21,7 @@ const envsSchema = joi.object({
   APP_ENV: joi.string().required(),
   APP_URL: joi.string().required(),
   NATS_URL: joi.string().required(),
+  NATH_SERVICE: joi.string().required(),
   MERCADO_PAGO_URL: joi.string().required(),
   MERCADO_PAGO_PUBLIC_KEY: joi.string().required(),
   MERCADO_PAGO_PRIVATE_KEY: joi.string().required(), 
@@ -48,4 +50,5 @@ export const envs = {
   m_pago_webhook: envVars.MERCADO_PAGO_URL,
   m_pago_public: envVars.MERCADO_PAGO_PUBLIC_KEY,
   m_pago_private: envVars.MERCADO_PAGO_PRIVATE_KEY,
+  nats_service_name: envVars.NATH_SERVICE,
 }
